@@ -9,8 +9,7 @@ const screenHeight = window.innerHeight
 canvas.width = screenWidth
 canvas.height = screenHeight
 const ctx = canvas.getContext('2d')
-const databus = new DataBus()
-
+wx.cloud.init()
 
 /**
  * 游戏主函数
@@ -22,13 +21,22 @@ export default class Main {
     that.aniId = 0
 
     that.dataBus = new DataBus()
+    that.localLogin()
+    new Index(ctx)
 
     that.render()
-    new Index(ctx)
-  //  new PlayButton1(ctx)
   }
 
-
+  localLogin() {
+    let that = this
+    wx.getStorage({
+      key: 'user',
+      success (res) {
+        console.log(res)
+        that.dataBus.user = JSON.parse(res.data)
+      }
+    })
+  }
 
   loop() {
     let that = this

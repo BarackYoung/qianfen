@@ -1,6 +1,8 @@
 import BaseRender from "../base/BaseRender"
 import PlayButton from "./PlayButton"
 import DataBus from "../databus"
+import UserInfoUI from "./userInfoUI"
+import ScoreUI from "./scoreUI"
 
 const screenWidth = wx.getSystemInfoSync().windowWidth
 const screenHeight = wx.getSystemInfoSync().windowHeight
@@ -22,10 +24,14 @@ export default class Index extends BaseRender{
     // 显示主页
     addItem(){
         let that = this
-        that.playButton1 = new PlayButton(that.ctx, 1)
-        that.playButton2 = new PlayButton(that.ctx, 2)
-        that.databus.renderMap.set("playButton1",that.playButton1)
-        that.databus.renderMap.set("playButton2",that.playButton2)
+        var playButton1 = new PlayButton(that.ctx, 1)
+        var playButton2 = new PlayButton(that.ctx, 2)
+        that.databus.renderMap.set("playButton1",playButton1)
+        that.databus.renderMap.set("playButton2",playButton2)
+        // 头像信息
+        var userInfoUI = new UserInfoUI(that.ctx)
+        that.databus.renderMap.set("userInfoUI",userInfoUI)
+        that.databus.renderMap.set("scoreUI", new ScoreUI(that.ctx))
     }
 
 }

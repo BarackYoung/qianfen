@@ -10,9 +10,13 @@ export default class DataBus {
     if (instance) return instance
 
     instance = that
-
+   
+    //渲染图像
     that.renderMap = new Map()
-    that.curentRender = []
+
+    //用户信息
+    that.user = new Object()
+    that.user.login = false
   }
 
 

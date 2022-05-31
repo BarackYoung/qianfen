@@ -1,4 +1,5 @@
 import BaseRender from "../base/BaseRender";
+import DataBus from "../databus";
 
 const IMG_SCR =  'images/button1.png'
 const IMG_SCR2 =  'images/button2.png'
@@ -38,6 +39,10 @@ export default class PlayButton extends BaseRender{
           const y = e.touches[0].clientY
           if (x > that.x && x < that.x + that.width && y > that.y && y < that.y + that.height) {
               console.log("button" +that.buttonType+ " touched!")
+              if(that.buttonType == 1) {
+                // var databus = new DataBus()
+                // databus.renderMap.get("playButton2").show = false
+              }
           }
         }))
     
