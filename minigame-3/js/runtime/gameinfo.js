@@ -1,10 +1,14 @@
-const screenWidth = window.innerWidth
-const screenHeight = window.innerHeight
 
+let instance = null
 export default class GameInfo {
-  renderGameScore(ctx, score) {
  
-  }
+  constructor() {
+    let that = this
+    if (instance) return instance
 
+    instance = that
+   
+    that.room = null
+  }
 
 }
